@@ -1,0 +1,36 @@
+﻿<Window x:Class="DesktopAppChat.Views.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewmodels="clr-namespace:DesktopAppChat.ViewModel"
+        xmlns:behaviors="clr-namespace:DesktopAppChat.Additionals"
+        mc:Ignorable="d"
+        Title="SignInWindow" Height="450" Width="350">
+
+    <Window.DataContext>
+        <viewmodels:SignInViewModel />
+    </Window.DataContext>
+
+    <Grid Background="PaleVioletRed">
+        <Grid Margin="0, 0, 0, 100">
+            <TextBlock Text="Login" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25, 20, 10, 10" FontFamily="Courier New" FontWeight="Bold" />
+            <TextBox Background="AliceBlue" Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Margin="10, 50, 10, 0" Height="30" FontFamily="Courier New" FontWeight="Bold"/>
+            <TextBlock Text="Password" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25, 120, 10, 10" FontFamily="Courier New" FontWeight="Bold" />
+            <PasswordBox Background="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="300" Margin="10, 0, 10, 150" Height="30" >
+            <i:Interaction.Behaviors>
+                <behaviors:PasswordBoxAdditional Password="{Binding Password, Mode=TwoWay}"></behaviors:PasswordBoxAdditional>
+            </i:Interaction.Behaviors>
+            </PasswordBox>
+        </Grid>
+        <Grid Margin="0, 350, 0, 0">
+            <Button Background="LightBlue" x:Name="Exit" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Height="25" Width="75" Click="Exit_Click" >
+                <TextBlock Text="Exit" FontSize="14" FontFamily="Courier New" FontWeight="Bold" />
+            </Button>
+            <Button Background="LightBlue" x:Name="SignIn" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Height="25" Width="75" Command="{Binding SignIn}" IsEnabled="True" >
+                <TextBlock Text="Sign in" FontSize="14" FontFamily="Courier New" FontWeight="Bold" />
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
